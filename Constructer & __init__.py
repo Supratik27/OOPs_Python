@@ -12,7 +12,11 @@ class Items:
         return f"the total price of the {self.name} is:", self.price * self.quantity
 
 
+<<<<<<< HEAD
 Item1 = Items("Skateboard", 2, 2500)
+=======
+Item1 = Items("Bicycle", 2, 2500)
+>>>>>>> origin/master
 Item2 = Items("Bike", 1, 65000)
 print(Item1.calculate_total_Price())
 print(Item2.calculate_total_Price())
