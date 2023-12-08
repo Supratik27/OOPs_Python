@@ -11,7 +11,7 @@ class Items:
         assert quantity >= 0, f"The quantity of the item {name} should be greater than equal to zero"
         # Assign to self object
         self.__name = name
-        self.price = price
+        self.__price = price
         self.quantity = quantity
 
         # Actions to execute
@@ -29,11 +29,27 @@ class Items:
         else:
             self.__name = value
 
-    def calculate_total_Price(self):
-        return self.price * self.quantity
+    @property
+    def price(self):
+        return self.__price
 
     def apply_discount(self):
-        self.price = self.price * Items.discount
+        self.__price = self.__price * Items.discount
+
+    def apply_increment(self, value):
+        self.__price = self.__price + self.__price * value
+
+    def calculate_total_Price(self):
+        return self.__price * self.quantity
+
+    # We are using Abstraction principle for this method by adding __ before method name
+    def __prepare_body(self):
+        pass
+
+    def send_email(self):
+        # calling the method which is Abstracted and hidden from users
+        self.__prepare_body()
+        print("Email sent to user!!")
 
     @classmethod
     def instantiate_from_csv(cls):
@@ -64,4 +80,4 @@ class Items:
     # that can be customized or predefined,
     # i.e. we can also create the string representation of the object according to our needs.
     def __repr__(self):
-        return f"{self.__class__.__name__}('{self.name}','{self.price}','{self.quantity}')"
+        return f"{self.__class__.__name__}('{self.name}','{self.__price}','{self.quantity}')"

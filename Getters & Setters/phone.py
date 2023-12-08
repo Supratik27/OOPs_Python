@@ -1,7 +1,10 @@
 from items import Items
 
 
+# Here we are using the inheritance principle where the class "Phone" inherit the class "Items"
 class Phone(Items):
+    # Using polymorphism
+    discount = 0.5
 
     def __init__(self, name: str, price: float, quantity=0, broken_phone=0):
         # Call to super function to have access to all attributes / methods of the parent class
